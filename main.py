@@ -57,7 +57,7 @@ class Game:
 
     async def on_new_game(self,websocket,message):
         if message["content"]=="newgame":
-            self.new_game()
+            await self.new_game()
 
     async def move_done(self,websocket,message):
         id = message["user_id"]
