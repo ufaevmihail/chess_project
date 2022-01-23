@@ -2,9 +2,11 @@
 import websockets
 import asyncio
 import json
+import os
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
+port = int(os.environ.get("PORT", "8001"))
 
   # Press Ctrl+F8 to toggle the breakpoint.
 class Game:
@@ -67,7 +69,7 @@ class Game:
 
 
 async def main():
-    async with websockets.serve(game.listen, "localhost", 5678) as server:
+    async with websockets.serve(game.listen, "localhost", port) as server:
         await asyncio.Future()
 
 # Press the green button in the gutter to run the script.
