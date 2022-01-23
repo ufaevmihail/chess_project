@@ -350,10 +350,10 @@ class PeshkaFigure extends Figure{
 		}
 		if (field.sledpeshki != null){
 			removeItemOnce(board.figures[(this.team+1)%2],field.sledpeshki)
-			//if (field.sledpeshki.field)
-			    //field.sledpeshki.field.figure = null;
+			if (field.sledpeshki.field)
+			    field.sledpeshki.field.figure = null;
 			field.sledpeshki.field = null
-			field.sledpeshki=null
+		//	field.sledpeshki=null
 		}
 		super.makeMove(field,send)
 	    this.prevrashenie()
@@ -629,7 +629,8 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  websocket = new WebSocket(getWebSocketServer());
+  //websocket = new WebSocket(getWebSocketServer());
+  websocket = new WebSocket("wss://chessproject1.herokuapp.com/")
   websocket.onopen=(event)=>{
   websocket.send(JSON.stringify({type:'connection',content:'startgame'}))}
 
@@ -661,6 +662,7 @@ function getWebSocketServer() {
     return "wss://chessproject1.herokuapp.com/";
   } else if (window.location.host === "localhost:63342") {
     return "ws://localhost:8001/";
+   //return "wss://chessproject1.herokuapp.com/";
   } else {
     throw new Error(`Unsupported host: ${window.location.host}`);
   }
