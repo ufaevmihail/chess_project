@@ -6,7 +6,7 @@ import os
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
-port = int(os.environ.get("PORT", "8001"))
+
 
   # Press Ctrl+F8 to toggle the breakpoint.
 class Game:
@@ -74,6 +74,7 @@ async def main():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    port = int(os.environ.get("PORT", "8001"))
     game = Game()
     asyncio.run(main())
 
