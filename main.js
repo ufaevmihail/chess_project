@@ -629,7 +629,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  websocket = new WebSocket("ws://localhost:5678/");
+  websocket = new WebSocket(getWebSocketServer());
   websocket.onopen=(event)=>{
   websocket.send(JSON.stringify({type:'connection',content:'startgame'}))}
 
@@ -656,7 +656,15 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   };})
 
-
+function getWebSocketServer() {
+  if (window.location.host === "ufaevmihail.github.io") {
+    return "wss://chessproject1.herokuapp.com/";
+  } else if (window.location.host === "localhost:8000") {
+    return "ws://localhost:8001/";
+  } else {
+    throw new Error(`Unsupported host: ${window.location.host}`);
+  }
+}
 
 
 
