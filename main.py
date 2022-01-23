@@ -69,7 +69,7 @@ class Game:
 
 
 async def main():
-    async with websockets.serve(game.listen, "localhost", port) as server:
+    async with websockets.serve(game.listen, "0.0.0.0", port) as server:
         await asyncio.Future()
 
 # Press the green button in the gutter to run the script.
